@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar />
-        {children}
+        <div className="min-h-screen">{children}</div>
 
         <Footer />
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>

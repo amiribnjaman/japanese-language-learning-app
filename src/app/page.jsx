@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="min-h-screen text-center flex flex-col items-center justify-center">
+    <div className="md:mt-32 text-center flex flex-col items-center justify-center">
       <h1 className="text-[40px] font-semibold">
         Japanese Language Learn Make easy with Jll
       </h1>
