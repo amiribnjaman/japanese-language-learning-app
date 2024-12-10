@@ -4,11 +4,9 @@ export default function Navbar() {
   return (
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
       <div class="max-w-[70%] flex flex-wrap items-center justify-between mx-auto p-8">
-        <a
-          href="https://flowbite.com/"
-          class="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <span className='text-red-600 font-bold text-2xl'>Jll</span> <span>Japanese Language Learn</span>
+        <a class="text-sm text-gray-500 sm:text-center dark:text-gray-400 flex items-center">
+          <span className="text-red-600 font-bold text-2xl mr-2">Jll</span>
+          <span className="text-lg">Japanese Language Learn</span>
         </a>
         <button
           data-collapse-toggle="navbar-default"
@@ -61,7 +59,6 @@ export default function Navbar() {
                 Signup
               </a>
             </li>
-           
           </ul>
         </div>
       </div>

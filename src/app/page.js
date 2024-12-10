@@ -2,12 +2,12 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="text-center mt-28 flex flex-col items-center justify-center">
+    <div className="min-h-screen text-center flex flex-col items-center justify-center">
       <h1 className="text-[40px] font-semibold">
         Japanese Language Learn Make easy with Jll
       </h1>
       <h5 className="text-[20px]">
-        We make leangeage vocabulary easy to learn and implentent.
+       You can learn Japanese leangeage & vocabulary easily with Jll.
       </h5>
       <button
         type="button"
