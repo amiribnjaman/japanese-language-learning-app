@@ -1,8 +1,15 @@
 "use client";
-import React from "react";
+
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 export default function Signup() {
+  const navigate = useRouter();
+  const [loading, setLoading] = useState(false);
+
   const {
     register,
     formState: { errors },
@@ -10,59 +17,72 @@ export default function Signup() {
     reset,
   } = useForm();
 
+  // Login submit function
+  const loginSubmit = async (data) => {
+    setLoading(true);
+    if (data.email && data.password) {
+      console.log(data);
+      await axios
+        .post(`http://localhost:4000/user/login`, data, {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          if (res.data.status == "200") {
+            localStorage.setItem("userId", res.data.userId);
+            setCookie("Token", res.data.token);
+            toast.success(res.data.message);
+            // Redirect user to Home page
+            navigate.push("/");
+          } else if (res.data.status == "401" || res.data.status == "404") {
+            toast.error(res.data.message);
+            setLoading(false);
+          }
+        })
+        .catch((err) => {
+          toast.error("Something went wrong");
+          setLoading(false);
+        });
+    }
+
+    reset();
+  };
+
+  // Custom id for tostify
+  const customId = "custom-id-yes";
+
   return (
     <div className="md:w-[70%] mx-auto">
-      <div className="md:w-[50%] mx-auto md:mt-24">
-        <form onSubmit={handleSubmit()} className="mt-1">
+      <div className="md:w-[50%] mx-auto md:mt-32">
+        <form onSubmit={handleSubmit(loginSubmit)} className="mt-1">
           <h5 className="text-center text-2xl font-semibold">Login</h5>
-
-
-          {/* Email field */}
           <input
-            {...register("email", {
-              required: true,
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              },
-            })}
+            {...register("email", { required: true })}
             type="text"
-            className="border rounded-md p-2 block w-full mt-2"
+            className="border rounded-md p-2 block w-full mt-3"
             placeholder="Email Address"
           />
-          {/* Email errors */}
-          {/* <p className="hidden">
-                  {errors.email?.type === "pattern" &&
-                    toast.error(
-                      `Invalid email. Please provide a valid email address.`,
-                      
-                    )}
-                </p> */}
-          {/* <p className="hidden">
-                  {errors?.email &&
-                    toast.error("Email field is required", )}
-                </p> */}
-
-          {/* Password field */}
+          <p className="hidden">
+            {errors?.email &&
+              toast.error("Email is required", {
+                toastId: customId,
+              })}
+          </p>
           <input
-            {...register("password", { required: true, minLength: 6 })}
+            {...register("password", { required: true })}
             type="password"
-            className="border rounded-md p-2 block w-full mt-2"
-            placeholder="Your Password"
+            className="border rounded-md p-2 block w-full mt-3"
+            placeholder="Password"
           />
-          {/* Password errors */}
-          {/* <p className="hidden">
-                  {errors.password?.type === "minLength" &&
-                    toast.error(
-                      `Password is too short. 
-                Please provide atleast 6 characters.`,
-                      
-                    )}
-                </p> */}
-          {/* <p className="hidden">
-                  {errors?.password &&
-                    toast.error("Password field is required",)}
-                </p> */}
-          
+          <p className="hidden">
+            {errors?.password &&
+              toast.error("Password is required", {
+                toastId: customId,
+              })}
+          </p>
+
           <button
             type="submit"
             className="bg-red-500 hover:bg-gradient-to-l text-white text-lg font-semibold rounded-md px-8 py-2 mt-6 mb-3 w-full"

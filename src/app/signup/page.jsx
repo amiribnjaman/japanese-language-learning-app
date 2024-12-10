@@ -1,33 +1,65 @@
 'use client'
 import React from 'react'
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function Signup() {
+  const navigate = useRouter();
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+    reset,
+  } = useForm();
 
-    const {
-      register,
-      formState: { errors },
-      handleSubmit,
-      reset,
-    } = useForm();
+  // Signup submit function
+  const signUpSubmit = async (data) => {
+    if (data.firstName && data.email && data.password) {
+      await axios
+        .post(`http://localhost:4000/user/signup`, data, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          if (res.data.status == "201") {
+            toast.success("Signup successfully! Login now.");
+            // Redirect user to Login page
+            navigate.push("/login");
+          } else if (res.data.status == "400") {
+            toast.warn(res.data.message);
+          }
+        })
+        .catch((err) => {
+          toast.error("Something wrong. Try again");
+        });
+    }
+    reset();
+  };
+
+  // Custom id for tostify
+  const customId = "custom-id-yes";
 
   return (
     <div className="md:w-[70%] mx-auto">
-      <div className="md:w-[50%] mx-auto md:mt-24">
-        <form onSubmit={handleSubmit()} className="mt-1">
+      <div className="md:w-[50%] mx-auto md:mt-32">
+        <form onSubmit={handleSubmit(signUpSubmit)} className="mt-1">
           <h5 className="text-center text-2xl font-semibold">Signup</h5>
-          {/* Firstname field */}
+          {/* Name field */}
           <input
-            {...register("firstName", { required: true })}
+            {...register("name", { required: true })}
             type="text"
             className="border rounded-md p-2 block w-full mt-3"
-            placeholder="Firstname"
+            placeholder="Name"
           />
-          {/* Firstname error */}
-          {/* <p className="hidden">
-                  {errors?.firstName &&
-                    toast.error("First Name field is required",)}
-                </p> */}
+          {/* Name error */}
+          <p className="hidden">
+            {errors?.name &&
+              toast.error("Name field is required", {
+                toastId: customId,
+              })}
+          </p>
 
           {/* Email field */}
           <input
@@ -42,17 +74,21 @@ export default function Signup() {
             placeholder="Email Address"
           />
           {/* Email errors */}
-          {/* <p className="hidden">
-                  {errors.email?.type === "pattern" &&
-                    toast.error(
-                      `Invalid email. Please provide a valid email address.`,
-                      
-                    )}
-                </p> */}
-          {/* <p className="hidden">
-                  {errors?.email &&
-                    toast.error("Email field is required", )}
-                </p> */}
+          <p className="hidden">
+            {errors.email?.type === "pattern" &&
+              toast.error(
+                `Invalid email. Please provide a valid email address.`,
+                {
+                  toastId: customId,
+                }
+              )}
+          </p>
+          <p className="hidden">
+            {errors?.email &&
+              toast.error("Email field is required", {
+                toastId: customId,
+              })}
+          </p>
 
           {/* Password field */}
           <input
@@ -62,18 +98,22 @@ export default function Signup() {
             placeholder="Your Password"
           />
           {/* Password errors */}
-          {/* <p className="hidden">
-                  {errors.password?.type === "minLength" &&
-                    toast.error(
-                      `Password is too short. 
+          <p className="hidden">
+            {errors.password?.type === "minLength" &&
+              toast.error(
+                `Password is too short. 
                 Please provide atleast 6 characters.`,
-                      
-                    )}
-                </p> */}
-          {/* <p className="hidden">
-                  {errors?.password &&
-                    toast.error("Password field is required",)}
-                </p> */}
+                {
+                  toastId: customId,
+                }
+              )}
+          </p>
+          <p className="hidden">
+            {errors?.password &&
+              toast.error("Password field is required", {
+                toastId: customId,
+              })}
+          </p>
           {/* Image field */}
           <input
             type="file"
