@@ -6,6 +6,10 @@ import { toast } from "react-toastify";
 
 export default function Signup() {
   const navigate = useRouter();
+  const imgbbKey = "aefb8bb9063d982e8940fd31a2d29f9d";
+  const url = `https://api.imgbb.com/1/upload?key=${imgbbKey}`;
+  let imgUrl;
+
   const {
     register,
     formState: { errors },
@@ -15,9 +19,26 @@ export default function Signup() {
 
   // Signup submit function
   const signUpSubmit = async (data) => {
+    // Upload image into imgbb
+    const img = data.image[0];
+    if (img) {
+      let formData = new FormData();
+      formData.append("image", img);
+      await fetch(url, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          imgUrl = data.data.url;
+        });
+    }
+
+
+    // SUBMIT USER DATA TO SERVER
     if (data.firstName && data.email && data.password) {
       await axios
-        .post(`http://localhost:4000/user/signup`, data, {
+        .post(`http://localhost:4000/user/signup`, {data: data, imgUrl: imgUrl}, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -117,6 +138,7 @@ export default function Signup() {
           {/* Image field */}
           <input
             type="file"
+            {...register("image")}
             name="image"
             id=""
             className="border rounded-md p-2 px-2 block w-full mt-2"
