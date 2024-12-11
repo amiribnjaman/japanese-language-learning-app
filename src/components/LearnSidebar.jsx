@@ -1,7 +1,25 @@
-import Link from 'next/link';
-import React from 'react'
+'use client'
+
+import Link from "next/link";
+import React, { useEffect } from "react";
 
 export default function LearnSidebar() {
+
+    let userId;
+    /*
+     **
+     ** GETTING LOGEDIN USER-ID FROM LOCALSTORAGE
+     **
+     */
+    if (typeof window !== "undefined") {
+      userId = localStorage.getItem("userId");
+    }
+
+    useEffect(() => {
+        
+    }, [])
+
+
   return (
     <div>
       <aside
@@ -48,13 +66,15 @@ export default function LearnSidebar() {
               </Link>
             </li>
 
-                      {/* ADMIN OPTION HEADING */}
-                      <div className='pt-5'>
-                          <h6 className='text-sm text-gray-400 font-semibold'>Admin Option</h6>
-                      </div>
+            {/* ADMIN OPTION HEADING */}
+            <div className="pt-5">
+              <h6 className="text-sm text-gray-400 font-semibold">
+                Admin Option
+              </h6>
+            </div>
             <li>
               <Link
-                href="/learn/add-lession"
+                href="/learn/manage-user"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -90,7 +110,7 @@ export default function LearnSidebar() {
             </li>
             <li>
               <Link
-                href="/learn/vocabulary"
+                href="/learn/manage-lession"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
@@ -126,7 +146,7 @@ export default function LearnSidebar() {
             </li>
             <li>
               <Link
-                href="/vocabulary"
+                href="/learn/manage-vocabulary"
                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <svg
