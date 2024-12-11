@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -10,6 +10,8 @@ export default function Signup() {
   const imgbbKey = "aefb8bb9063d982e8940fd31a2d29f9d";
   const url = `https://api.imgbb.com/1/upload?key=${imgbbKey}`;
   let imgUrl;
+    const [loading, setLoading] = useState(false);
+
 
   const {
     register,
@@ -45,15 +47,11 @@ console.log(data, imgUrl)
     // SUBMIT USER DATA TO SERVER
     if (data.name && data.email && data.password) {
       await axios
-        .post(
-          `signup`,
-          finalData,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        .post(`http://localhost:4000/api/v1/user/signup`, finalData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
         .then((res) => {
           if (res.data.status == "201") {
             toast.success("Signup successfully! Login now.");
@@ -157,9 +155,11 @@ console.log(data, imgUrl)
           />
           <button
             type="submit"
-            className="bg-red-500 hover:bg-gradient-to-l text-white text-lg font-semibold rounded-md px-8 py-2 mt-6 mb-3 w-full"
+            className={`${
+              loading ? "cursor-not-allowed" : "cursor-pointer"
+            } bg-red-500 hover:bg-gradient-to-l text-white text-lg font-semibold rounded-md px-8 py-2 mt-6 mb-3 w-full`}
           >
-            Signup
+            {`${loading ? "Loading..." : "Signup"}`}
           </button>
         </form>
       </div>

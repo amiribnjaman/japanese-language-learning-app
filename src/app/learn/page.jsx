@@ -13,10 +13,5 @@ if (typeof window !== "undefined") {
 
 
 
-
-
-
-
-
   return <div className="md:w-[70%] mx-auto">Learn</div>;
 }

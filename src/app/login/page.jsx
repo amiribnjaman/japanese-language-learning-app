@@ -2,12 +2,16 @@
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { useCookies } from "react-cookie";
 
 
-export default function Signup() {
+export default function Login() {
   const navigate = useRouter();
+  const [loading, setLoading] = useState(false)
+  const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
 
   const {
     register,
@@ -18,6 +22,7 @@ export default function Signup() {
 
   // Login submit function
   const loginSubmit = async (data) => {
+    setLoading(true)
     if (data.email && data.password) {
       console.log(data);
       await axios
@@ -29,9 +34,11 @@ export default function Signup() {
         })
         .then((res) => {
           if (res.data.status == "200") {
+            console.log(res.data);
             localStorage.setItem("userId", res.data.userId);
             setCookie("Token", res.data.token);
             toast.success(res.data.message);
+            setLoading(false);
             // Redirect user to Home page
             navigate.push("/");
           } else if (res.data.status == "401" || res.data.status == "404") {
@@ -39,6 +46,7 @@ export default function Signup() {
           }
         })
         .catch((err) => {
+              setLoading(false);
           toast.error("Something went wrong");
         });
     }
@@ -81,9 +89,9 @@ export default function Signup() {
 
           <button
             type="submit"
-            className="bg-red-500 hover:bg-gradient-to-l text-white text-lg font-semibold rounded-md px-8 py-2 mt-6 mb-3 w-full"
+            className={`${loading ? 'cursor-not-allowed': 'cursor-pointer'} bg-red-500 hover:bg-gradient-to-l text-white text-lg font-semibold rounded-md px-8 py-2 mt-6 mb-3 w-full`}
           >
-            Login
+            {`${loading ? "Loading..." : "Login"}`}
           </button>
         </form>
       </div>
