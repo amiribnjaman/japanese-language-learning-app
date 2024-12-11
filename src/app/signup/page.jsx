@@ -3,6 +3,7 @@ import React from 'react'
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 export default function Signup() {
   const navigate = useRouter();
@@ -34,20 +35,31 @@ export default function Signup() {
         });
     }
 
-
+    const finalData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      img: imgUrl 
+    }
+console.log(data, imgUrl)
     // SUBMIT USER DATA TO SERVER
-    if (data.firstName && data.email && data.password) {
+    if (data.name && data.email && data.password) {
       await axios
-        .post(`http://localhost:4000/user/signup`, {data: data, imgUrl: imgUrl}, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .post(
+          `signup`,
+          finalData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((res) => {
           if (res.data.status == "201") {
             toast.success("Signup successfully! Login now.");
             // Redirect user to Login page
             navigate.push("/login");
+            console.log(res.data);
           } else if (res.data.status == "400") {
             toast.warn(res.data.message);
           }

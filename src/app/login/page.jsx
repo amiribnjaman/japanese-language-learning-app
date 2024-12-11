@@ -4,11 +4,10 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import { useState } from "react";
+
 
 export default function Signup() {
   const navigate = useRouter();
-  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -19,11 +18,10 @@ export default function Signup() {
 
   // Login submit function
   const loginSubmit = async (data) => {
-    setLoading(true);
     if (data.email && data.password) {
       console.log(data);
       await axios
-        .post(`http://localhost:4000/user/login`, data, {
+        .post(`http://localhost:4000/api/v1/user/login`, data, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
@@ -38,12 +36,10 @@ export default function Signup() {
             navigate.push("/");
           } else if (res.data.status == "401" || res.data.status == "404") {
             toast.error(res.data.message);
-            setLoading(false);
           }
         })
         .catch((err) => {
           toast.error("Something went wrong");
-          setLoading(false);
         });
     }
 
