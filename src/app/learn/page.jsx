@@ -7,6 +7,7 @@ import { useCookies } from "react-cookie";
 export default function Learn() {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const [allLession, setAllLession] = useState([]);
+    const [loading, setLoading] = useState(false);
 
   let userId;
   /*
@@ -20,6 +21,7 @@ export default function Learn() {
 
   // GETTING ALL LESSION THROUGH USEEFFECT
   useEffect(() => {
+    setLoading(true)
     fetch(`http://localhost:4000/api/v1/lession/getalllession`, {
       method: "GET",
       headers: {
@@ -37,11 +39,13 @@ export default function Learn() {
       .catch((err) => {
         console.log("Something went wrong");
       });
+    setLoading(false)
   }, []);
 
   return (
     <div className="md:w-[70%] mx-auto">
       <h3 className="text-2xl font-semibold mb-2">Learn Now</h3>
+      {loading && "Loading..."}
       {allLession.map((lession) => (
         <div className="bg-gray-200 w-[100%] mt-3 rounded-lg border">
           <div className="bg-gray-100">

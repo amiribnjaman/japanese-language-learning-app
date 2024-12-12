@@ -12,9 +12,11 @@ export default function Lession() {
   const { lessionName, lessionNo } = useParams();
   const [vocabularies, setVocabularies] = useState([]);
   const navigate = useRouter();
+  const [loading, setLoading] = useState(false);
 
   // GETTING ALL LESSION THROUGH USEEFFECT
   useEffect(() => {
+    setLoading(true);
     fetch(
       `http://localhost:4000/api/v1/vocabulary/getvocabularymatchlession/${lessionNo}`,
       {
@@ -35,6 +37,7 @@ export default function Lession() {
       .catch((err) => {
         console.log("Something went wrong");
       });
+    setLoading(false);
   }, []);
 
   // States for pagination
@@ -53,29 +56,30 @@ export default function Lession() {
 
   // FUNCTION FOR PRONOUNCE WORD
   function pronounceWord(word) {
-     console.log(word)
-      const utterance = new SpeechSynthesisUtterance(word);
-      utterance.lang = 'ja-JP'; // Japanese
-      window.speechSynthesis.speak(utterance);
+    console.log(word);
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = "ja-JP"; // Japanese
+    window.speechSynthesis.speak(utterance);
   }
-  
+
   // CONFENETI CEBELREATION FUNCTION
   const confenettiForComplete = () => {
     confetti({
       particleCount: 200,
       spread: 50,
-      origin: { y: 0.6 }
-    })
+      origin: { y: 0.6 },
+    });
 
-    setTimeout(()=>{
+    setTimeout(() => {
       navigate.push("/learn");
-    })
-  }
+    });
+  };
 
   return (
     <div className="md:w-[90%] ml-auto">
       <h4 className="text-lg font-semibold mb-2">Lession {lessionNo}</h4>
       <div className="flex mt-10 justify-center items-center">
+        {loading && 'Loading...'}
         {vocabularies.map((vocabulary) => (
           <div>
             <h2 className="text-4xl font-semibold">{vocabulary.word}</h2>
