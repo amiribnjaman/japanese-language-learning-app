@@ -62,7 +62,6 @@ export function middleware(request) {
 
 
 
-
 export const config = {
-  matcher: ["/", "/login", "/signup", "/learn", "/learn/add-lession", "/learn/manage-user", "/tutorial", "/learn/", "/learn/add-vocabulary", "/learn/manage-lession","/learn/manage-vocabulary",],
+  matcher: ["/", "/login", "/signup", "/learn", "/learn/add-lession", "/learn/manage-user", "/learn/tutorial", "/learn/", "/learn/add-vocabulary", "/learn/manage-lession","/learn/manage-vocabulary",],
 };

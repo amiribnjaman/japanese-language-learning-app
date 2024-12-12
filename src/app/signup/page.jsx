@@ -22,6 +22,7 @@ export default function Signup() {
 
   // Signup submit function
   const signUpSubmit = async (data) => {
+    setLoading(true)
     // Upload image into imgbb
     const img = data.image[0];
     if (img) {
@@ -54,15 +55,18 @@ console.log(data, imgUrl)
         })
         .then((res) => {
           if (res.data.status == "201") {
+            setLoading(false);
             toast.success("Signup successfully! Login now.");
             // Redirect user to Login page
             navigate.push("/login");
             console.log(res.data);
           } else if (res.data.status == "400") {
+            setLoading(false);
             toast.warn(res.data.message);
           }
         })
         .catch((err) => {
+          setLoading(false)
           toast.error("Something wrong. Try again");
         });
     }

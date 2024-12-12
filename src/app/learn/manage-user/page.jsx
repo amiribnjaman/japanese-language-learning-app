@@ -1,9 +1,61 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 
 export default function ManageUser() {
+const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
+  const [allUser, setAllUser] = useState([])
+  const [roleUpdate, setRoleUpdate] = useState(false)
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/api/v1/user/getalluser`, {
+      method: "GET",
+      headers: {
+        authorization: "Bearer " + cookies.Token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status == "200") {
+          setAllUser(data.data);
+        }
+      })
+      .catch((err) => {
+        console.log("Something went wrong");
+      });
+  }, [roleUpdate]);
+
+
+  const handleRoleChange = (data) => {
+    console.log(data)
+    fetch(`http://localhost:4000/api/v1/user/changeuserrole`, {
+      method: "PATCH",
+      headers: {
+        authorization: "Bearer " + cookies.Token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: data,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status == "200") {
+          console.log(data);
+          setRoleUpdate(!roleUpdate);
+        }
+      })
+      .catch((err) => {
+        console.log("Something went wrong");
+      });
+  }
+
+
   return (
-      <div className="md:w-[90%] ml-auto">
-          <h4 className="text-lg font-semibold mb-2">Manage User</h4>
+    <div className="md:w-[90%] ml-auto">
+      <h4 className="text-lg font-semibold mb-2">Manage User</h4>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -14,38 +66,42 @@ export default function ManageUser() {
               <th scope="col" class="px-6 py-3">
                 Email
               </th>
-              
+
               <th scope="col" class="px-6 py-3">
                 Role
               </th>
-              
+              <th scope="col" class="px-6 py-3">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <th
-                scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                Apple 
-              </th>
-              
-              <td class="px-6 py-4">$2999</td>
-              <td class="px-6 py-4 text-right flex gap-x-2">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  Edit
-                </a>
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
-                  Delete
-                </a>
-              </td>
-            </tr>
+            {allUser.map((user) => (
+              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="px-6 py-4 font-medium text-gray-900  dark:text-white">
+                  {user.name}
+                </td>
+                <td class="px-6 py-4">{user.email}</td>
+                <td class="px-6 py-4 gap-x-2">{user.role}</td>
+                <td class="pl-6 py-4">
+                  {user.role == "admin" ? (
+                    <button
+                      onClick={() => handleRoleChange(user.email)}
+                      className="bg-red-200 px-2 py-1 rounded"
+                    >
+                      Make User
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => handleRoleChange(user.email)}
+                      className="bg-green-200 px-2 py-1 rounded"
+                    >
+                      Make Admin
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

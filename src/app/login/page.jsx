@@ -40,7 +40,7 @@ export default function Login() {
             toast.success(res.data.message);
             setLoading(false);
             // Redirect user to Home page
-            navigate.push("/");
+            navigate.push("/learn");
           } else if (res.data.status == "401" || res.data.status == "404") {
             toast.error(res.data.message);
           }
