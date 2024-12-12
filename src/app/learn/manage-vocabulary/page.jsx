@@ -27,7 +27,6 @@ export default function ManageVocabulary() {
         console.log("Something went wrong");
       });
   }, []);
-  console.log(allVocabulary);
 
   return (
     <div className="md:w-[90%] ml-auto">
