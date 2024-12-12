@@ -50,9 +50,6 @@ export default function ManageVocabulary() {
               <th scope="col" class="px-6 py-3">
                 Lession No
               </th>
-              <th scope="col" class="px-6 py-3">
-                Action
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -68,20 +65,7 @@ export default function ManageVocabulary() {
                 <td class="px-6 py-4">{vocabulary.pronunciation}</td>
                 <td class="px-6 py-4">{vocabulary.whenToSay}</td>
                 <td class="px-6 py-4">{vocabulary.lessionNumber}</td>
-                <td class="px-6 py-4 text-right flex gap-x-2">
-                  <a
-                    href="#"
-                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Edit
-                  </a>
-                  <a
-                    href="#"
-                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Delete
-                  </a>
-                </td>
+                
               </tr>
             ))}
           </tbody>

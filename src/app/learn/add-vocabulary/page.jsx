@@ -21,7 +21,7 @@ export default function AddVocabulary() {
   const addVocabularySubmit = async (data) => {
     console.log(data);
     setLoading(true);
-    if (data.word && data.pronunciation && data.whenToSay && data.lessionNumber && data.adminEmail) {
+    if (data.word && data.pronunciation && data.meaning && data.whenToSay && data.lessionNumber && data.adminEmail) {
       console.log(data);
       await axios
         .post(
@@ -92,6 +92,22 @@ export default function AddVocabulary() {
           </div>
           <div>
             <label
+              for="meaning"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Meaning
+            </label>
+            <input
+              {...register("meaning", { required: true })}
+              type="text"
+              id="meaning"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              required
+            />
+          </div>
+          <div>
+            <label
               for="when_to_say"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
@@ -115,7 +131,7 @@ export default function AddVocabulary() {
             </label>
             <input
               {...register("lessionNumber", { required: true })}
-              type="text"
+              type="number"
               id="lession_no"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder=""
