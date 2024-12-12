@@ -7,9 +7,9 @@ let userId;
  ** GETTING LOGEDIN USER-ID FROM LOCALSTORAGE
  **
  */
-if (typeof window !== "undefined") {
-  userId = localStorage.getItem("userId");
-}
+// if (typeof window !== "undefined") {
+//   userId = localStorage.getItem("userId");
+// }
 
 
 

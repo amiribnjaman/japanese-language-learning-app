@@ -1,7 +1,30 @@
-import Link from 'next/link';
-import React from 'react'
+"use client";
+
+import Link from "next/link";
+import React from "react";
+import { useRouter } from "next/navigation";
+import { useCookies } from "react-cookie";
 
 export default function Navbar() {
+  const navigate = useRouter();
+  const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
+  let userId;
+  /*
+   **
+   ** GETTING LOGEDIN USER-ID FROM LOCALSTORAGE
+   **
+   */
+  if (typeof window !== "undefined") {
+    userId = localStorage.getItem("userId");
+  }
+
+  // Handle logout button
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    setCookie("Token", "");
+    navigate.push("/login");
+  };
+
   return (
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
       <div class="max-w-[70%] flex flex-wrap items-center justify-between mx-auto p-8">
@@ -39,7 +62,6 @@ export default function Navbar() {
               <Link
                 href="/"
                 class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                
               >
                 Home
               </Link>
@@ -48,27 +70,39 @@ export default function Navbar() {
               <Link
                 href="/learn"
                 class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                
               >
                 Learn
               </Link>
             </li>
-                      <li>
-              <Link
-                href="/login"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Login
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/signup"
-                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Signup
-              </Link>
-            </li>
+            {userId ? (
+              <li>
+                <button
+                  onClick={handleLogout}
+                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                >
+                  Logout
+                </button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    href="/login"
+                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Login
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/signup"
+                    class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  >
+                    Signup
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
