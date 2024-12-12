@@ -22,6 +22,7 @@ export default function Navbar() {
   const handleLogout = () => {
     localStorage.removeItem("userId");
     setCookie("Token", "");
+    sessionStorage.removeItem("Token");
     navigate.push("/login");
   };
 
