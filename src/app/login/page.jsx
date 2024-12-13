@@ -26,7 +26,7 @@ export default function Login() {
     if (data.email && data.password) {
       console.log(data);
       await axios
-        .post(`http://localhost:4000/api/v1/user/login`, data, {
+        .post(`https://japanese-language-learning-server-1.onrender.com/api/v1/user/login`, data, {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",

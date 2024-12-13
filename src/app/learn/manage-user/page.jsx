@@ -1,21 +1,24 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 
 export default function ManageUser() {
-const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
-  const [allUser, setAllUser] = useState([])
-  const [roleUpdate, setRoleUpdate] = useState(false)
+  const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
+  const [allUser, setAllUser] = useState([]);
+  const [roleUpdate, setRoleUpdate] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/v1/user/getalluser`, {
-      method: "GET",
-      headers: {
-        authorization: "Bearer " + cookies.Token,
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/user/getalluser`,
+      {
+        method: "GET",
+        headers: {
+          authorization: "Bearer " + cookies.Token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "200") {
@@ -27,19 +30,21 @@ const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
       });
   }, [roleUpdate]);
 
-
   const handleRoleChange = (data) => {
-    console.log(data)
-    fetch(`http://localhost:4000/api/v1/user/changeuserrole`, {
-      method: "PATCH",
-      headers: {
-        authorization: "Bearer " + cookies.Token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: data,
-      }),
-    })
+    console.log(data);
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/user/changeuserrole`,
+      {
+        method: "PATCH",
+        headers: {
+          authorization: "Bearer " + cookies.Token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "200") {
@@ -50,8 +55,7 @@ const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
       .catch((err) => {
         console.log("Something went wrong");
       });
-  }
-
+  };
 
   return (
     <div className="md:w-[90%] ml-auto">

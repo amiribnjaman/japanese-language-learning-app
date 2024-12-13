@@ -1,12 +1,11 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
- 
 
 export default function LearnSidebar() {
-  const [userRole, setUserRole] = useState('');
+  const [userRole, setUserRole] = useState("");
   let userId;
   /*
    **
@@ -18,12 +17,15 @@ export default function LearnSidebar() {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/v1/user/getuser/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/user/getuser/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -36,7 +38,6 @@ export default function LearnSidebar() {
         console.log("Something went wrong");
       });
   }, [userRole]);
-
 
   return (
     <div>

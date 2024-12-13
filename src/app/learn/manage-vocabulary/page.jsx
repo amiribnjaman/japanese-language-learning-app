@@ -9,13 +9,16 @@ export default function ManageVocabulary() {
 
   // GETTING ALL VOCABULARY THROUGH USEEFFECT
   useEffect(() => {
-    fetch(`http://localhost:4000/api/v1/vocabulary/getallvocabulary`, {
-      method: "GET",
-      headers: {
-        authorization: "Bearer " + cookies.Token,
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/vocabulary/getallvocabulary`,
+      {
+        method: "GET",
+        headers: {
+          authorization: "Bearer " + cookies.Token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -65,7 +68,6 @@ export default function ManageVocabulary() {
                 <td class="px-6 py-4">{vocabulary.pronunciation}</td>
                 <td class="px-6 py-4">{vocabulary.whenToSay}</td>
                 <td class="px-6 py-4">{vocabulary.lessionNumber}</td>
-                
               </tr>
             ))}
           </tbody>

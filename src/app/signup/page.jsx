@@ -1,5 +1,5 @@
-'use client'
-import React, { useState } from 'react'
+"use client";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
@@ -10,8 +10,7 @@ export default function Signup() {
   const imgbbKey = "aefb8bb9063d982e8940fd31a2d29f9d";
   const url = `https://api.imgbb.com/1/upload?key=${imgbbKey}`;
   let imgUrl;
-    const [loading, setLoading] = useState(false);
-
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -22,7 +21,7 @@ export default function Signup() {
 
   // Signup submit function
   const signUpSubmit = async (data) => {
-    setLoading(true)
+    setLoading(true);
     // Upload image into imgbb
     const img = data.image[0];
     if (img) {
@@ -42,17 +41,21 @@ export default function Signup() {
       name: data.name,
       email: data.email,
       password: data.password,
-      img: imgUrl 
-    }
-console.log(data, imgUrl)
+      img: imgUrl,
+    };
+    console.log(data, imgUrl);
     // SUBMIT USER DATA TO SERVER
     if (data.name && data.email && data.password) {
       await axios
-        .post(`http://localhost:4000/api/v1/user/signup`, finalData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .post(
+          `https://japanese-language-learning-server-1.onrender.com/api/v1/user/signup`,
+          finalData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((res) => {
           if (res.data.status == "201") {
             setLoading(false);
@@ -66,7 +69,7 @@ console.log(data, imgUrl)
           }
         })
         .catch((err) => {
-          setLoading(false)
+          setLoading(false);
           toast.error("Something wrong. Try again");
         });
     }

@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 export default function Learn() {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const [allLession, setAllLession] = useState([]);
-    const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   let userId;
   /*
@@ -21,14 +21,17 @@ export default function Learn() {
 
   // GETTING ALL LESSION THROUGH USEEFFECT
   useEffect(() => {
-    setLoading(true)
-    fetch(`http://localhost:4000/api/v1/lession/getalllession`, {
-      method: "GET",
-      headers: {
-        authorization: "Bearer " + cookies.Token,
-        "Content-Type": "application/json",
-      },
-    })
+    setLoading(true);
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/lession/getalllession`,
+      {
+        method: "GET",
+        headers: {
+          authorization: "Bearer " + cookies.Token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -39,7 +42,7 @@ export default function Learn() {
       .catch((err) => {
         console.log("Something went wrong");
       });
-    setLoading(false)
+    setLoading(false);
   }, []);
 
   return (

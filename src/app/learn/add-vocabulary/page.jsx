@@ -21,11 +21,18 @@ export default function AddVocabulary() {
   const addVocabularySubmit = async (data) => {
     console.log(data);
     setLoading(true);
-    if (data.word && data.pronunciation && data.meaning && data.whenToSay && data.lessionNumber && data.adminEmail) {
+    if (
+      data.word &&
+      data.pronunciation &&
+      data.meaning &&
+      data.whenToSay &&
+      data.lessionNumber &&
+      data.adminEmail
+    ) {
       console.log(data);
       await axios
         .post(
-          `http://localhost:4000/api/v1/vocabulary/createvocabulary`,
+          `https://japanese-language-learning-server-1.onrender.com/api/v1/vocabulary/createvocabulary`,
           data,
           {
             headers: {
