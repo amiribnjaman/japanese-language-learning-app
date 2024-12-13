@@ -32,7 +32,7 @@ export default function AddVocabulary() {
       console.log(data);
       await axios
         .post(
-          `https://japanese-language-learning-server-1.onrender.com/api/v1/vocabulary/createvocabulary`,
+          `http://localhost:4000/api/v1/vocabulary/createvocabulary`,
           data,
           {
             headers: {

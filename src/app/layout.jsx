@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
         <div className="min-h-screen">{children}</div>
 
         <Footer />
-        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+        <Script src="../path/to/flowbite/dist/flowbite.min.js" strategy="lazyOnload" />
       </body>
     </html>
   );

@@ -18,7 +18,7 @@ export default function Lession() {
   useEffect(() => {
     setLoading(true);
     fetch(
-      `https://japanese-language-learning-server-1.onrender.com/api/v1/vocabulary/getvocabularymatchlession/${lessionNo}`,
+      `http://localhost:4000/api/v1/vocabulary/getvocabularymatchlession/${lessionNo}`,
       {
         method: "GET",
         headers: {
@@ -81,7 +81,7 @@ export default function Lession() {
       <div className="flex mt-10 justify-center items-center">
         {loading && "Loading..."}
         {vocabularies.map((vocabulary) => (
-          <div>
+          <div key={vocabulary.id}>
             <h2 className="text-4xl font-semibold">{vocabulary.word}</h2>
             <h3>{vocabulary.pronunciation}</h3>
             <h3>{vocabulary.meaning}</h3>

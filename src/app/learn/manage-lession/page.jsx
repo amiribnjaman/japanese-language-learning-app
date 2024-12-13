@@ -9,7 +9,7 @@ export default function ManageLession() {
 
   // GETTING ALL LESSION THROUGH USEEFFECT
   useEffect(() => {
-    fetch(`https://japanese-language-learning-server-1.onrender.com/api/v1/lession/getalllession`, {
+    fetch(`http://localhost:4000/api/v1/lession/getalllession`, {
       method: "GET",
       headers: {
         authorization: "Bearer " + cookies.Token,
@@ -55,7 +55,7 @@ export default function ManageLession() {
           </thead>
           <tbody>
             {allLession.map((lession) => (
-              <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <tr key={lession.id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="px-6 py-4">{lession.lessionName}</td>
                 <td class="px-6 py-4">{lession.lessionNumber}</td>
                 <td class="px-6 py-4">$2999</td>

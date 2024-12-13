@@ -24,16 +24,12 @@ export default function AddLession() {
     if (data.lessionName && data.lessionNumber) {
       console.log(data);
       await axios
-        .post(
-          `https://japanese-language-learning-server-1.onrender.com/api/v1/lession/addlession`,
-          data,
-          {
-            headers: {
-              authorization: "Bearer " + cookies.Token,
-              "Content-Type": "application/json",
-            },
-          }
-        )
+        .post(`http://localhost:4000/api/v1/lession/addlession`, data, {
+          headers: {
+            authorization: "Bearer " + cookies.Token,
+            "Content-Type": "application/json",
+          },
+        })
         .then((res) => {
           console.log(res.data);
           if (res.data.status == "200") {
