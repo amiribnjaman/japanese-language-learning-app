@@ -22,13 +22,16 @@ export default function Learn() {
   // GETTING ALL LESSION THROUGH USEEFFECT
   useEffect(() => {
     setLoading(true);
-    fetch(`http://localhost:4000/api/v1/lession/getalllession`, {
-      method: "GET",
-      headers: {
-        authorization: "Bearer " + cookies.Token,
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/lession/getalllession`,
+      {
+        method: "GET",
+        headers: {
+          authorization: "Bearer " + cookies.Token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -47,7 +50,10 @@ export default function Learn() {
       <h3 className="text-2xl font-semibold mb-2">Learn Now</h3>
       {loading && "Loading..."}
       {allLession.map((lession) => (
-        <div key={lession.id} className="bg-gray-200 w-[100%] mt-3 rounded-lg border">
+        <div
+          key={lession.id}
+          className="bg-gray-200 w-[100%] mt-3 rounded-lg border"
+        >
           <div className="bg-gray-100">
             <h4 className="px-6 py-3 text-2xl font-semibold capitalize">
               {lession.lessionName}

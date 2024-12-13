@@ -18,7 +18,7 @@ export default function Lession() {
   useEffect(() => {
     setLoading(true);
     fetch(
-      `http://localhost:4000/api/v1/vocabulary/getvocabularymatchlession/${lessionNo}`,
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/vocabulary/getvocabularymatchlession/${lessionNo}`,
       {
         method: "GET",
         headers: {

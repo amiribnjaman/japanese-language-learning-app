@@ -11,7 +11,7 @@ export default function Signup() {
   const url = `https://api.imgbb.com/1/upload?key=${imgbbKey}`;
   let imgUrl;
   const [loading, setLoading] = useState(false);
-  
+  // https://japanese-language-learning-server-1.onrender.com
   const {
     register,
     formState: { errors },
@@ -47,11 +47,15 @@ export default function Signup() {
     // SUBMIT USER DATA TO SERVER
     if (data.name && data.email && data.password) {
       await axios
-        .post(`http://localhost:4000/api/v1/user/signup`, finalData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
+        .post(
+          `https://japanese-language-learning-server-1.onrender.com/api/v1/user/signup`,
+          finalData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        )
         .then((res) => {
           if (res.data.status == "201") {
             setLoading(false);

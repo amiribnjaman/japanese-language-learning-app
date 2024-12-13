@@ -9,7 +9,7 @@ export default function ManageLession() {
 
   // GETTING ALL LESSION THROUGH USEEFFECT
   useEffect(() => {
-    fetch(`http://localhost:4000/api/v1/lession/getalllession`, {
+    fetch(`https://japanese-language-learning-server-1.onrender.com/api/v1/lession/getalllession`, {
       method: "GET",
       headers: {
         authorization: "Bearer " + cookies.Token,

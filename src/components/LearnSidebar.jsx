@@ -17,12 +17,15 @@ export default function LearnSidebar() {
   }
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/v1/user/getuser/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/user/getuser/${userId}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

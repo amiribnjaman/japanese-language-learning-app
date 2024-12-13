@@ -9,13 +9,16 @@ export default function ManageUser() {
   const [roleUpdate, setRoleUpdate] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/api/v1/user/getalluser`, {
-      method: "GET",
-      headers: {
-        authorization: "Bearer " + cookies.Token,
-        "Content-Type": "application/json",
-      },
-    })
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/user/getalluser`,
+      {
+        method: "GET",
+        headers: {
+          authorization: "Bearer " + cookies.Token,
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "200") {
@@ -29,16 +32,19 @@ export default function ManageUser() {
 
   const handleRoleChange = (data) => {
     console.log(data);
-    fetch(`http://localhost:4000/api/v1/user/changeuserrole`, {
-      method: "PATCH",
-      headers: {
-        authorization: "Bearer " + cookies.Token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: data,
-      }),
-    })
+    fetch(
+      `https://japanese-language-learning-server-1.onrender.com/api/v1/user/changeuserrole`,
+      {
+        method: "PATCH",
+        headers: {
+          authorization: "Bearer " + cookies.Token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: data,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.status == "200") {
@@ -75,7 +81,10 @@ export default function ManageUser() {
           </thead>
           <tbody>
             {allUser.map((user) => (
-              <tr key={user.id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+              <tr
+                key={user.id}
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              >
                 <td class="px-6 py-4 font-medium text-gray-900  dark:text-white">
                   {user.name}
                 </td>
