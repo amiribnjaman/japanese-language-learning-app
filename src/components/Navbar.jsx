@@ -28,10 +28,10 @@ export default function Navbar() {
 
   return (
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
-      <div class="max-w-[70%] flex flex-wrap items-center justify-between mx-auto p-8">
+      <div class="w-[90%] md:max-w-[70%] flex flex-wrap items-center justify-between mx-auto p-8">
         <a class="text-sm text-gray-500 sm:text-center dark:text-gray-400 flex items-center">
           <span className="text-red-600 font-bold text-2xl mr-2">Jll</span>
-          <span className="text-lg">Japanese Language Learn</span>
+          <span className="text-lg hidden lg:block">Japanese Language Learn</span>
         </a>
         <button
           data-collapse-toggle="navbar-default"

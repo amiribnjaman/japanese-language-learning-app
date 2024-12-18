@@ -80,8 +80,8 @@ export default function Signup() {
   const customId = "custom-id-yes";
 
   return (
-    <div className="md:w-[70%] mx-auto">
-      <div className="md:w-[50%] mx-auto md:mt-32">
+    <div className="md:w-[70%] w-[90%] mx-auto">
+      <div className="md:w-[50%] w-[80%] mx-auto mt-32">
         <form onSubmit={handleSubmit(signUpSubmit)} className="mt-1">
           <h5 className="text-center text-2xl font-semibold">Signup</h5>
           {/* Name field */}
