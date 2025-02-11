@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import axios from "axios";
+import Link from "next/link";
 
 export default function Signup() {
   const navigate = useRouter();
@@ -168,6 +169,15 @@ export default function Signup() {
           >
             {`${loading ? "Loading..." : "Signup"}`}
           </button>
+          <p className="font-semibold text-sm">
+            Already have an Account?
+            <Link
+              href="/signup"
+              class="inline ml-2 py-2 px-3 text-gray-900 rounded underline text-red-400 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+            >
+              Login Now
+            </Link>
+          </p>
         </form>
       </div>
     </div>
