@@ -37,18 +37,24 @@ export default function Learn() {
         console.log(data);
         if (data.status == "200") {
           setAllLession(data.allLession);
+          setLoading(false);
         }
       })
       .catch((err) => {
         console.log("Something went wrong");
+        setLoading(false);
       });
-    setLoading(false);
+
   }, []);
 
   return (
     <div className="md:w-[70%] mx-auto">
       <h3 className="text-2xl font-semibold mb-2">Learn Now</h3>
-      {loading && "Loading..."}
+      {/* Loading state data */}
+      <div className=" mt-4" >
+        <h5>{loading && `Data Loading... 
+        Please wait a moment.`}</h5>
+      </div>
       {allLession.map((lession) => (
         <div
           key={lession.id}

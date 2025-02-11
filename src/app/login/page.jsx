@@ -44,6 +44,7 @@ export default function Login() {
             // Redirect user to Home page
             navigate.push("/learn");
           } else if (res.data.status == "401" || res.data.status == "404") {
+            setLoading(false);
             toast.error(res.data.message);
           }
         })

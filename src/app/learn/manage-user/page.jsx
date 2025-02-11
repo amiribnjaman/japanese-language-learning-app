@@ -7,8 +7,10 @@ export default function ManageUser() {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const [allUser, setAllUser] = useState([]);
   const [roleUpdate, setRoleUpdate] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch(
       `https://japanese-language-learning-server-1.onrender.com/api/v1/user/getalluser`,
       {
@@ -23,10 +25,12 @@ export default function ManageUser() {
       .then((data) => {
         if (data.status == "200") {
           setAllUser(data.data);
+          setLoading(false);
         }
       })
       .catch((err) => {
         console.log("Something went wrong");
+        setLoading(false);
       });
   }, [roleUpdate]);
 
@@ -61,7 +65,7 @@ export default function ManageUser() {
     <div className="md:w-[90%] ml-auto">
       <h4 className="text-lg font-semibold mb-2">Manage User</h4>
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 text-center">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" class="px-6 py-3">
@@ -111,6 +115,14 @@ export default function ManageUser() {
             ))}
           </tbody>
         </table>
+      </div>
+      {/* Loading state data */}
+      <div className=" mt-4">
+        <h5>
+          {loading &&
+            `Data Loading... 
+        Please wait a moment.`}
+        </h5>
       </div>
     </div>
   );
