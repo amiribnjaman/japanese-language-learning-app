@@ -63,12 +63,17 @@ export default function Login() {
     <div className="md:w-[70%] w-[90%] mx-auto">
       <div className="md:w-[50%] w-[80%] mx-auto mt-32">
         <form onSubmit={handleSubmit(loginSubmit)} className="mt-1">
-          <h5 className="text-center text-2xl font-semibold">Login</h5>
+          <h5 className="text-center text-2xl font-semibold mb-3">Login</h5>
+          {/* Email field */}
+          <label className="font-semibold text-sm mb-0 mt-3" htmlFor="name">
+            Name:
+          </label>
           <input
             {...register("email", { required: true })}
             type="text"
-            className="border rounded-md p-2 block w-full mt-3"
-            placeholder="Email Address"
+            id="name"
+            className="border rounded-md p-2 block w-full mb-3"
+            placeholder="example@mail.com"
           />
           <p className="hidden">
             {errors?.email &&
@@ -76,11 +81,17 @@ export default function Login() {
                 toastId: customId,
               })}
           </p>
+
+          {/* Password Field */}
+          <label className="font-semibold text-sm mb-0 mt-3" htmlFor="password">
+            Password:
+          </label>
           <input
             {...register("password", { required: true })}
             type="password"
-            className="border rounded-md p-2 block w-full mt-3"
-            placeholder="Password"
+            id="password"
+            className="border rounded-md p-2 block w-full mb-3"
+            placeholder="********"
           />
           <p className="hidden">
             {errors?.password &&
@@ -100,12 +111,12 @@ export default function Login() {
           <div>
             <p className="font-semibold text-sm">
               Don't have an account?
-                <Link
-                  href="/signup"
-                  class="inline ml-2 py-2 px-3 text-gray-900 rounded underline text-red-400 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                >
-                  Create Now
-                </Link>
+              <Link
+                href="/signup"
+                class="inline ml-2 py-2 px-3 text-gray-900 rounded underline text-red-400 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                Create Now
+              </Link>
             </p>
           </div>
         </form>
