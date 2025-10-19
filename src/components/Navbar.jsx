@@ -61,7 +61,7 @@ export default function Navbar() {
           </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul class="font-medium text-[18px] flex flex-col px-4 py-1 mt-4 border items-center border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul class="font-medium text-[18px] flex flex-col px-4 py-1 mt-4 border items-center border-gray-100 rounded-lg md:flex-row md:space-x-[16px] rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link
                 href="/"
@@ -113,6 +113,7 @@ export default function Navbar() {
         <div>
           <button className="px-7 py-3 bg-[#f4f8dd] rounded-full flex items-center gap-2">
             <span>Get Started</span>
+            
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="21"
