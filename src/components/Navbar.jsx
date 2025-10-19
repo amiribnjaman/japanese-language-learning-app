@@ -27,16 +27,14 @@ export default function Navbar() {
   };
 
   return (
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
-      <div class="w-[90%] md:max-w-[70%] flex flex-wrap items-center justify-between mx-auto p-8">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 fixed top-8 w-full z-[100]">
+      <div class="w-[95%] md:max-w-[92%] flex flex-wrap bg-[#d5f80f] items-center justify-between mx-auto px-8 py-4 rounded-full">
         <Link
           href="/"
-          class="text-sm text-gray-500 sm:text-center dark:text-gray-400 flex items-center"
+          className="Logo text-[28px] font-bold text-gray-900 sm:text-center dark:text-gray-400 flex items-center"
         >
-          <span className="text-red-600 font-bold text-2xl mr-2">Jll</span>
-          <span className="text-lg hidden lg:block">
-            Japanese Language Learn
-          </span>
+          {/* <span className="text-red-600 font-bold text-2xl mr-2">Jll</span> */}
+          <span className="">Languaza</span>
         </Link>
         <button
           data-collapse-toggle="navbar-default"
@@ -63,11 +61,11 @@ export default function Navbar() {
           </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border items-center border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <ul class="font-medium text-[18px] flex flex-col px-4 py-1 mt-4 border items-center border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
             <li>
               <Link
                 href="/"
-                class="block py-2 px-3 text-white hover:text-red-600 bg-blue-700 rounded md:bg-transparent md:text-red-600 md:p-0 dark:text-white md:dark:text-blue-500"
+                class="block py-1 px-4 text-gray-700 hover:bg-[#f4f8dd] rounded-full md:bg-transparent md:dark:text-blue-500"
               >
                 Home
               </Link>
@@ -75,16 +73,24 @@ export default function Navbar() {
             <li>
               <Link
                 href="/learn"
-                class="block py-2 px-3 text-gray-900 hover:text-red-600 bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white md:dark:text-blue-500"
+                class="block py-1 px-4 text-gray-700 hover:bg-[#f4f8dd] rounded-full md:bg-transparent md:dark:text-blue-500"
               >
-                Learn
+                About
               </Link>
             </li>
-            {userId ? (
+            <li>
+              <Link
+                href="/learn"
+                class="block py-1 px-4 text-gray-700 hover:bg-[#f4f8dd] rounded-full md:bg-transparent md:dark:text-blue-500"
+              >
+                Contact
+              </Link>
+            </li>
+            {/* {userId ? (
               <li>
                 <button
                   onClick={handleLogout}
-                  class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  class="block py-1 px-4 text-gray-700 hover:bg-[#f4f8dd]  rounded md:bg-transparent md:dark:text-blue-500"
                 >
                   Logout
                 </button>
@@ -94,14 +100,36 @@ export default function Navbar() {
                 <li>
                   <Link
                     href="/login"
-                    class="block px-4 py-1 text-gray-900 border border-1 border-red-600 hover:bg-red-600 rounded  hover:text-gray-100 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                    class="block py-1 px-4 text-gray-700 hover:bg-[#f4f8dd] rounded-full md:bg-transparent md:dark:text-blue-500"
                   >
                     Login
                   </Link>
                 </li>
               </>
-            )}
+            )} */}
           </ul>
+        </div>
+
+        <div>
+          <button className="px-7 py-3 bg-[#f4f8dd] rounded-full flex items-center gap-2">
+            <span>Get Started</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="21"
+              height="21"
+              viewBox="0 0 21 21"
+              className='rotate-90'
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m14.5 7.5l-4-4l-4.029 4m4.029-4v13"
+                stroke-width="1"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </nav>
