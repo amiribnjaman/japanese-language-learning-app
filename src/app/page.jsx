@@ -22,7 +22,7 @@ export default function Home() {
           <div className="flex mt-8 gap-2">
             <Link
               href="/learn"
-              class="focus:outline-none flex items-center gap-8 bg-[#d5f80f] text-dark focus:ring-4 focus:ring-red-300 font-semibold rounded-full text-[16px] pr-6 pl-10 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              class="focus:outline-none flex items-center gap-8 bg-[#d5f80f] hover:bg-[#cbee06] transition duration-400 text-dark focus:ring-4 focus:ring-red-300 font-semibold rounded-full text-[16px] pr-6 pl-10 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
             >
               <span>Lets Get Started</span>
               {/* ARROW ICON */}

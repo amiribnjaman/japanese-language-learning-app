@@ -111,15 +111,15 @@ export default function Navbar() {
         </div>
 
         <div>
-          <button className="px-7 py-3 bg-[#f4f8dd] rounded-full flex items-center gap-2">
+          <button className="px-7 py-3 bg-[#f4f8dd] hover:bg-[#e7f1aa] rounded-full flex items-center gap-2">
             <span>Get Started</span>
-            
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="21"
               height="21"
               viewBox="0 0 21 21"
-              className='rotate-90'
+              className="rotate-90"
             >
               <path
                 fill="none"
