@@ -205,7 +205,7 @@ export default function Home() {
             <h2 className="text-[30px] font-semibold mb-4">
               <span className="mr-[8px] relative inline-block">
                 Languaza
-                <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-16px] z-[-20]"></div>
+                <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-17px] z-[-20]"></div>
               </span>
               makes path easy
             </h2>
@@ -277,7 +277,7 @@ export default function Home() {
               Explore more Opportunities across the world by learning one new
               <span className="ml-[12px] relative inline-block">
                 Language
-                <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-16px] z-[-20]"></div>
+                <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-14px] z-[-20]"></div>
               </span>
             </h2>
             <h6 className="text-[16px] text-slate-800 w-[80%] mt-10 leading-[1.5]">
@@ -350,7 +350,7 @@ export default function Home() {
             Lets have a meeting with our
             <span className="mx-[12px] relative inline-block">
               Mentors
-              <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-22px] z-[-20]"></div>
+              <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-20px] z-[-20]"></div>
             </span>
           </h2>
 
