@@ -81,18 +81,27 @@ export default function Signup() {
   const customId = "custom-id-yes";
 
   return (
-    <div className="md:w-[70%] w-[90%] mx-auto">
-      <div className="md:w-[50%] w-[80%] mx-auto mt-12">
-        <form onSubmit={handleSubmit(signUpSubmit)} className="mt-1">
-          <h5 className="text-center text-2xl font-semibold mb-4">Signup</h5>
+    <div className="md:w-[70%] w-[90%] mx-auto flex items-center justify-center h-screen">
+      <div className="md:w-[60%] h-[600px] bg-gradient-to-bl from-[#f7faed] to-[#f0fce8] w-[80%] mx-auto rounded-lg flex items-center justify-center">
+        <form
+          onSubmit={handleSubmit(signUpSubmit)}
+          className="mt-1 w-full px-12"
+        >
+          <h2 className=" text-[36px] font-semibold mb-6 z-[100]">
+            Signup to
+            <span className="ml-[11px] relative inline-block z-[100]">
+              Fluentoo
+              <div className="w-full h-[20px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-28px] z-[-5]"></div>
+            </span>
+          </h2>
           {/* Name field */}
-          <label className="font-semibold text-sm mb-0 mt-3" htmlFor="name">
+          <label className="font-regular text-[16px] mb-0 mt-3" htmlFor="name">
             Name:
           </label>
           <input
             {...register("name", { required: true })}
             type="text"
-            className="border rounded-md p-2 block w-full mb-3"
+            className="rounded-md p-2.5 mt-2 w-[80%] block w-full mb-4 border-0"
             placeholder="John"
             id="name"
           />
@@ -105,7 +114,7 @@ export default function Signup() {
           </p>
 
           {/* Email field */}
-          <label className="font-semibold text-sm mb-0" htmlFor="email">
+          <label className="font-regular text-[16px] mb-0 mt-3" htmlFor="email">
             Email Address:
           </label>
           <input
@@ -117,7 +126,7 @@ export default function Signup() {
             })}
             type="text"
             id="email"
-            className="border rounded-md p-2 block w-full mb-3"
+            className="rounded-md p-2.5 mt-2 w-[80%] block w-full mb-4 border-0"
             placeholder="john@mail.com"
           />
           {/* Email errors */}
@@ -138,14 +147,17 @@ export default function Signup() {
           </p>
 
           {/* Password field */}
-          <label className="font-semibold text-sm mb-0" htmlFor="password">
+          <label
+            className="font-regular text-[16px] mb-0 mt-3"
+            htmlFor="password"
+          >
             Password:
           </label>
           <input
             {...register("password", { required: true, minLength: 6 })}
             type="password"
             id="password"
-            className="border rounded-md p-2 block w-full mb-3"
+            className="rounded-md p-2.5 mt-2 w-[80%] block w-full mb-4 border-0 flex items-center placeholder:items-center"
             placeholder="********"
           />
           {/* Password errors */}
@@ -166,7 +178,7 @@ export default function Signup() {
               })}
           </p>
           {/* Image field */}
-          <label className="font-semibold text-sm mb-0" htmlFor="image">
+          <label className="font-regular text-[16px] mb-0 mt-3" htmlFor="image">
             Profile Image:
           </label>
           <input
@@ -174,21 +186,21 @@ export default function Signup() {
             {...register("image")}
             name="image"
             id="image"
-            className="border rounded-md p-2 px-2 block w-full mb-1"
+            className="rounded-md p-2.5 w-[80%] block w-full mb-4 border-0"
           />
           <button
             type="submit"
             className={`${
               loading ? "cursor-not-allowed" : "cursor-pointer"
-            } bg-red-500 hover:bg-gradient-to-l text-white text-lg font-semibold rounded-md px-8 py-2 mt-3 mb-3 w-full`}
+            } bg-[#d5f80f] hover:bg-[#cbee06] text-dark text-lg font-semibold rounded-md px-8 py-2 mt-3 mb-3 w-full`}
           >
             {`${loading ? "Loading..." : "Signup"}`}
           </button>
-          <p className="font-semibold text-sm">
+          <p className="font-regular mt-1 text-[16px]">
             Already have an Account?
             <Link
               href="/login"
-              class="inline ml-2 py-2 px-3 text-gray-900 rounded underline text-red-400 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              class="inline ml-2 py-2 px-3 text-gray-900 rounded underline text-dark hover:font-semibold md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
             >
               Login Now
             </Link>

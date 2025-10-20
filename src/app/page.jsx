@@ -22,11 +22,11 @@ export default function Home() {
           <div className="flex mt-8 gap-2">
             <Link
               href="/learn"
-              class="focus:outline-none flex items-center gap-8 bg-[#d5f80f] hover:bg-[#cbee06] transition duration-400 text-dark focus:ring-4 focus:ring-red-300 font-semibold rounded-full text-[16px] pr-6 pl-10 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+              class="focus:outline-none flex items-center gap-8 bg-[#d5f80f] hover:bg-[#cbee06] transition duration-400 text-dark focus:ring-3 focus:ring-[#cbee06] font-semibold rounded-full text-[16px] pr-6 pl-10 py-2 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-[#d5f80f]"
             >
               <span>Lets Get Started</span>
               {/* ARROW ICON */}
-              <div className="w-[36px] h-[36px] rounded-full flex items-center justify-center bg-white">
+              <div className="w-[34px] h-[34px] rounded-full flex items-center justify-center bg-white">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -94,7 +94,7 @@ export default function Home() {
       </div>
 
       {/*==================Learn your faviorite language SECTION================*/}
-      <div className="mt-[152px] w-full  bg-gradient-to-bl from-[#f7faed] to-[#f0fce8] px-12 py-12 rounded-lg">
+      <div className="mt-[152px] w-full bg-gradient-to-bl from-[#f7faed] to-[#f0fce8] px-12 py-12 rounded-lg">
         <div className="w-[90%] mx-auto flex gap-12">
           <div>
             <div className="w-[360px] h-[400px] bg-[#ddd] rounded-lg">

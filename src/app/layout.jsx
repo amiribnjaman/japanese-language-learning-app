@@ -18,11 +18,12 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Learn japanese language in the easy way",
-  description: "You can learn japanese language here in the easy way.",
+  title: "Learn language in the easy way",
+  description: "You can learn language here in the easy way.",
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body

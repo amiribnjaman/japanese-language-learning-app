@@ -2,12 +2,19 @@
 
 import Link from "next/link";
 import React from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCookies } from "react-cookie";
 
 export default function Navbar() {
   const navigate = useRouter();
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
+  const path = usePathname();
+
+  let authPaths = ["login", "signup"];
+  let auth;
+
+  auth = authPaths.some(p => path.includes(p))
+
   let userId;
   /*
    **
@@ -26,15 +33,21 @@ export default function Navbar() {
     navigate.push("/login");
   };
 
+  console.log(auth)
+
   return (
-    <nav class="bg-white border-gray-200 dark:bg-gray-900 fixed top-8 w-full z-[100]">
-      <div class="w-[95%] md:max-w-[92%] flex flex-wrap bg-[#d5f80f] items-center justify-between mx-auto px-8 py-4 rounded-full">
+    <nav
+      class={`${
+        auth ? "hidden" : "block"
+      } bg-white border-gray-200 dark:bg-gray-900 fixed top-8 w-full z-[100]`}
+    >
+      <div class="w-[95%] md:max-w-[92%] flex flex-wrap bg-[#d5f80f] items-center justify-between mx-auto px-8 py-3 rounded-full">
         <Link
           href="/"
           className="Logo text-[28px] font-bold text-gray-900 sm:text-center dark:text-gray-400 flex items-center"
         >
           {/* <span className="text-red-600 font-bold text-2xl mr-2">Jll</span> */}
-          <span className="">Languaza</span>
+          <span className="">Fluentoo</span>
         </Link>
         <button
           data-collapse-toggle="navbar-default"
@@ -72,7 +85,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/learn"
+                href="/about"
                 class="block py-1 px-4 text-gray-700 hover:bg-[#f4f8dd] rounded-full md:bg-transparent md:dark:text-blue-500"
               >
                 About
@@ -80,7 +93,7 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/learn"
+                href="/contact"
                 class="block py-1 px-4 text-gray-700 hover:bg-[#f4f8dd] rounded-full md:bg-transparent md:dark:text-blue-500"
               >
                 Contact
@@ -111,7 +124,10 @@ export default function Navbar() {
         </div>
 
         <div>
-          <button className="px-7 py-3 bg-[#f4f8dd] hover:bg-[#e7f1aa] rounded-full flex items-center gap-2">
+          <button
+            onClick={() => navigate.push("/learn")}
+            className="px-7 py-3 bg-[#f4f8dd] hover:bg-[#f0f7c7] rounded-full flex items-center gap-2"
+          >
             <span>Get Started</span>
 
             <svg
