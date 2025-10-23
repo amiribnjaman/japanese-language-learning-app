@@ -7,12 +7,18 @@ export default function DashboardNav() {
     >
       <div className="pr-2 pt-2 flex justify-between items-center">
         <div>
-          <div className="w-[400px] shadow-[24px] flex items-center px-4 h-[44px] bg-white rounded">
-            <span>Search here...</span>
+          <div className="w-[400px] shadow-[24px] flex items-center h-[44px] bg-white rounded focus:border focus:border-[d5f80f]">
+            <input
+              type="text"
+              placeholder="Search here..."
+              className="w-full h-full outline-none rounded border-0 focus:border focus:border-[#d5f80f]"
+            />
           </div>
         </div>
-        <div className='flex gap-4'>
-          <button className='bg-[#d5f80f] hover:bg-[#cbee06] transition duration-400 text-dark font-[550] rounded-lg text-[15px] px-4 py-1.5'>Login as Tutor</button>
+        <div className="flex gap-4">
+          <button className="bg-[#d5f80f] hover:bg-[#cbee06] transition duration-400 text-dark font-[550] rounded-lg text-[15px] px-4 py-1.5">
+            Login as Tutor
+          </button>
           <button
             onClick={() => navigate.push("/learn")}
             className="w-[44px] h-[44px] bg-[#f0f7c7] hover:bg-[#f0f7c7] rounded-full flex items-center gap-2"

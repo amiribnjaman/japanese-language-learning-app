@@ -417,7 +417,7 @@ export default function Learn() {
         </div>
 
         {/* Loading state data */}
-        <div className=" mt-4">
+        {/* <div className=" mt-4">
           <h5>
             {loading &&
               `Data Loading... 
@@ -452,7 +452,7 @@ export default function Learn() {
               </div>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );

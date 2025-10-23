@@ -208,9 +208,9 @@ export default function Signup() {
             </p>
 
             {/* LOGIN AS TUTOR */}
-            <button className="bg-white hover:bg-[#cbee06] transition duration-400 text-dark font-[550] rounded-lg text-[15px] px-4 py-2">
+            {/* <button className="bg-white hover:bg-[#cbee06] transition duration-400 text-dark font-[550] rounded-lg text-[15px] px-4 py-2">
               Login as Tutor
-            </button>
+            </button> */}
           </div>
         </form>
       </div>
