@@ -60,7 +60,7 @@ export default function Home() {
             Improve speaking, listing and writing with interactive lessions,
             personalized prctice & quizzes. Whether you are learing for
             traveling, study or career growth- &apos;we make it fun, simple and
-            effictiveDon&apos;
+            effictive&apos;
           </p>
 
           <button className="mt-8 flex gap-3 font-semibold text-gray-800 items-center">
