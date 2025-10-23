@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 export default function Footer() {
   const path = usePathname();
 
-  let authPaths = ["login", "signup"];
+  let authPaths = ["login", "signup", 'learn'];
   let auth;
 
   auth = authPaths.some(p => path.includes(p))

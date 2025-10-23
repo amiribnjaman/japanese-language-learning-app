@@ -65,26 +65,31 @@ export default function Login() {
     <div className="md:w-[70%] w-[90%] mx-auto flex items-center justify-center h-screen">
       <div className="md:w-[60%] h-[520px] bg-gradient-to-bl from-[#f7faed] to-[#f0fce8] w-[80%] mx-auto rounded-lg flex items-center justify-center">
         <div className="w-full">
-          {/* HOME BACK BUTTON */}
-          <button onClick={()=> navigate.push('/')} className="ml-12 -mt-[16px] mb-[24px] px-4 py-2 flex gap-2 items-center bg-[#fff] rounded font-light">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="22"
-              height="22"
-              viewBox="0 0 21 21"
-              className="-rotate-90"
+          <div className="flex mx-12 -mt-[16px] mb-[24px]  justify-between items-center">
+            {/* HOME BACK BUTTON */}
+            <button
+              onClick={() => navigate.push("/")}
+              className=" px-4 py-2 flex gap-2 items-center bg-[#fff] rounded font-light"
             >
-              <path
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="m14.5 7.5l-4-4l-4.029 4m4.029-4v13"
-                stroke-width="1"
-              />
-            </svg>
-            {/* <span>Home</span> */}
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 21 21"
+                className="-rotate-90"
+              >
+                <path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="m14.5 7.5l-4-4l-4.029 4m4.029-4v13"
+                  stroke-width="1"
+                />
+              </svg>
+              {/* <span>Home</span> */}
+            </button>
+          </div>
 
           <form
             onSubmit={handleSubmit(loginSubmit)}
@@ -147,8 +152,8 @@ export default function Login() {
             >
               {`${loading ? "Loading..." : "Login"}`}
             </button>
-            <div>
-              <p className="font-regular mt-1 text-[16px]">
+            <div className="flex justify-between mt-3 items-center">
+              <p className="font-regular text-[16px]">
                 Don't have an account?
                 <Link
                   href="/signup"
@@ -157,6 +162,11 @@ export default function Login() {
                   Create Now
                 </Link>
               </p>
+
+              {/* LOGIN AS TUTOR */}
+              <button className="bg-white hover:bg-[#cbee06] transition duration-400 text-dark font-[550] rounded-lg text-[15px] px-4 py-2">
+                Login as Tutor
+              </button>
             </div>
           </form>
         </div>

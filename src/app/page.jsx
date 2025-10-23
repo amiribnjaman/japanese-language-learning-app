@@ -22,9 +22,9 @@ export default function Home() {
           <div className="flex mt-8 gap-2">
             <Link
               href="/learn"
-              class="focus:outline-none flex items-center gap-8 bg-[#d5f80f] hover:bg-[#cbee06] transition duration-400 text-dark focus:ring-3 focus:ring-[#cbee06] font-semibold rounded-full text-[16px] pr-6 pl-10 py-2 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-[#d5f80f]"
+              class="focus:outline-none flex items-center gap-8 bg-[#d5f80f] hover:bg-[#cbee06] transition duration-400 text-dark focus:ring-3 focus:ring-[#cbee06] font-semibold rounded-full text-[16px] pr-5 pl-8 py-2 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-[#d5f80f]"
             >
-              <span>Lets Get Started</span>
+              <span>Get Started</span>
               {/* ARROW ICON */}
               <div className="w-[34px] h-[34px] rounded-full flex items-center justify-center bg-white">
                 <svg
@@ -204,8 +204,8 @@ export default function Home() {
           <div className="mt-12  w-1/3">
             <h2 className="text-[30px] font-semibold mb-4">
               <span className="mr-[8px] relative inline-block">
-                Languaza
-                <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-17px] z-[-20]"></div>
+                Fluentoo
+                <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-20px] z-[-20]"></div>
               </span>
               makes path easy
             </h2>
@@ -276,8 +276,8 @@ export default function Home() {
             <h2 className="text-[32px] leading-[1.2] font-semibold">
               Explore more Opportunities across the world by learning one new
               <span className="ml-[12px] relative inline-block">
-                Language
-                <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-14px] z-[-20]"></div>
+                Fluentoo
+                <div className="w-full h-[14px] bg-gradient-to-b from-[#eff5cf] to-[#d5f80f] absolute mt-[-16px] z-[-20]"></div>
               </span>
             </h2>
             <h6 className="text-[16px] text-slate-800 w-[80%] mt-10 leading-[1.5]">
@@ -346,7 +346,7 @@ export default function Home() {
       {/*==================OUR TEAM SECTION================*/}
       <div className="my-[140px] font-semibold">
         <div className="text-center">
-          <h2 className="text-[32px] mb-[-32px]">
+          <h2 className="text-[32px] font-semibold mb-[-32px]">
             Lets have a meeting with our
             <span className="mx-[12px] relative inline-block">
               Mentors

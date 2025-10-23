@@ -46,18 +46,18 @@ export function middleware(request) {
   console.log(logoutUserNotAccessUrl);
 
   // Logic for loged in user
-  if (logedInUserNotAccessUrl) {
-    if (authToken) {
-      return NextResponse.redirect(new URL("/learn", request.url));
-    }
-  }
+  // if (logedInUserNotAccessUrl) {
+  //   if (authToken) {
+  //     return NextResponse.redirect(new URL("/learn", request.url));
+  //   }
+  // }
 
-  // Logic for logout in user
-  if (logoutUserNotAccessUrl) {
-    if (!authToken) {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
-  }
+  // // Logic for logout in user
+  // if (logoutUserNotAccessUrl) {
+  //   if (!authToken) {
+  //     return NextResponse.redirect(new URL("/login", request.url));
+  //   }
+  // }
 }
 
 

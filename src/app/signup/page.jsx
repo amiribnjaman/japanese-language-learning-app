@@ -186,25 +186,32 @@ export default function Signup() {
             {...register("image")}
             name="image"
             id="image"
-            className="rounded-md p-2.5 w-[80%] block w-full mb-4 border-0"
+            className="rounded-md p-2.5 w-[80%] block w-full mb-2 border-0"
           />
           <button
             type="submit"
             className={`${
               loading ? "cursor-not-allowed" : "cursor-pointer"
-            } bg-[#d5f80f] hover:bg-[#cbee06] text-dark text-lg font-semibold rounded-md px-8 py-2 mt-3 mb-3 w-full`}
+            } bg-[#d5f80f] hover:bg-[#cbee06] text-dark text-lg font-semibold rounded-md px-8 py-2 mt-2 mb-3 w-full`}
           >
             {`${loading ? "Loading..." : "Signup"}`}
           </button>
-          <p className="font-regular mt-1 text-[16px]">
-            Already have an Account?
-            <Link
-              href="/login"
-              class="inline ml-2 py-2 px-3 text-gray-900 rounded underline text-dark hover:font-semibold md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-            >
-              Login Now
-            </Link>
-          </p>
+          <div className="flex justify-between mt-2 items-center">
+            <p className="font-regular text-[16px]">
+              Already have an Account?
+              <Link
+                href="/login"
+                class="inline ml-2 py-2 px-3 text-gray-900 rounded underline text-dark hover:font-semibold md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                Login Now
+              </Link>
+            </p>
+
+            {/* LOGIN AS TUTOR */}
+            <button className="bg-white hover:bg-[#cbee06] transition duration-400 text-dark font-[550] rounded-lg text-[15px] px-4 py-2">
+              Login as Tutor
+            </button>
+          </div>
         </form>
       </div>
     </div>

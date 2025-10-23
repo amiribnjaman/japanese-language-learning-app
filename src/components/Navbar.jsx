@@ -10,7 +10,7 @@ export default function Navbar() {
   const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
   const path = usePathname();
 
-  let authPaths = ["login", "signup"];
+  let authPaths = ["login", "signup", 'learn'];
   let auth;
 
   auth = authPaths.some(p => path.includes(p))
@@ -39,7 +39,7 @@ export default function Navbar() {
     <nav
       class={`${
         auth ? "hidden" : "block"
-      } bg-white border-gray-200 dark:bg-gray-900 fixed top-8 w-full z-[100]`}
+      } backdrop-blur-lg bg-white border-gray-200 dark:bg-gray-900 fixed top-8 w-full z-[100]`}
     >
       <div class="w-[95%] md:max-w-[92%] flex flex-wrap bg-[#d5f80f] items-center justify-between mx-auto px-8 py-3 rounded-full">
         <Link
@@ -125,7 +125,7 @@ export default function Navbar() {
 
         <div>
           <button
-            onClick={() => navigate.push("/learn")}
+            onClick={() => navigate.push("/login")}
             className="px-7 py-3 bg-[#f4f8dd] hover:bg-[#f0f7c7] rounded-full flex items-center gap-2"
           >
             <span>Get Started</span>
